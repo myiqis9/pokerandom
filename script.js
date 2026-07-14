@@ -20,7 +20,7 @@ function generate() {
     const dupes = new Set();
 
     while (pokemon.length < int) {
-        let r = randomize(1, 232);
+        let r = randomize(0, 233);
         if (dupes.has(r)) continue;
         dupes.add(r);
 
