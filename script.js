@@ -16,30 +16,24 @@ function randomize(min, max) {
 
 function generate() {
     pokemon = [];
-
     int = parseInt(document.getElementById("count").value);
+    const dupes = new Set();
 
-    while(pokemon.length < int) {
-        const dupes = new Set();
-        let n;
-
-        let r = randomize(1, 228);
+    while (pokemon.length < int) {
+        let r = randomize(1, 232);
         if (dupes.has(r)) continue;
         dupes.add(r);
 
-        for (let p of pokelist) {
-            if (p.id == r) n = p;
-        }
+        let n = pokelist.find(p => p.id === r);
+        if (n) pokemon.push(n);
 
-        pokemon.push(n);
+        display();
     }
-
-    display();
 }
 
 function isShiny() {
     let r = randomize(1, 312);
-    if(r == 1) return true;
+    if (r == 1) return true;
     else return false;
 }
 
@@ -53,7 +47,7 @@ function display() {
         pokeEl.classList.add("pokeitem");
 
         const pokeimg = new Image(128, 128);
-        if(isShiny()) pokeimg.src = "images/" + p.id + "shiny.png";
+        if (isShiny()) pokeimg.src = "images/shiny/" + p.id + ".png";
         else pokeimg.src = "images/" + p.id + ".png";
         pokeEl.appendChild(pokeimg);
 
