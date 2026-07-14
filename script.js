@@ -32,7 +32,7 @@ function generate() {
 }
 
 function isShiny() {
-    let r = randomize(1, 312);
+    let r = randomize(1, 62);
     if (r == 1) return true;
     else return false;
 }
