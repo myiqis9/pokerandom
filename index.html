@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>randomizer</title>
+    <style>
+        body {
+            background-color: black;
+            display: flex;
+            min-height: 50vh;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            flex-direction: column;
+        }
+
+        input[type="number"] {
+            width: 50px;
+            background-color: black;
+            border: 1px double white;
+            margin-left: 5px;
+            color: white;
+        }
+
+        #pokedisplay {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: solid white 1px;
+            border-radius: 5px;
+            margin-top: 25px;
+            margin-left: auto;
+            margin-right: auto;
+            visibility: hidden;
+        }
+
+        .pokeitem {
+            width: 150px;
+            height: 160px;
+            margin: 5px;
+            padding: none;
+        }
+
+        .poketxt {
+            text-align: center;
+            margin: -1;
+            padding: none;
+            line-height: 0px;
+        }
+    </style>
+</head>
+
+<body>
+        <div>
+            Amount to generate:
+            <input type="number" id="count" min="1" max="228" value="1">
+            <button onclick="generate()">Go</button>
+            <p></p>
+            
+        </div>
+    <div id="pokedisplay"></div>
+
+</body>
+<script src="script.js"></script>
+
+</html>
