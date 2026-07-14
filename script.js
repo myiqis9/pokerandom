@@ -7,9 +7,9 @@ fetch("names.json")
     .then((data) => { pokelist = data; })
 
 
-function randomize() {
-    min = Math.ceil(1);
-    max = Math.floor(228);
+function randomize(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
 
     return Math.floor(Math.random() * (max - min)) + min;
 }
@@ -19,9 +19,13 @@ function generate() {
 
     int = parseInt(document.getElementById("count").value);
 
-    for (let i = 0; i < int; i++) {
-        let r = randomize();
+    while(pokemon.length < int) {
+        const dupes = new Set();
         let n;
+
+        let r = randomize(1, 228);
+        if (dupes.has(r)) continue;
+        dupes.add(r);
 
         for (let p of pokelist) {
             if (p.id == r) n = p;
@@ -31,6 +35,12 @@ function generate() {
     }
 
     display();
+}
+
+function isShiny() {
+    let r = randomize(1, 312);
+    if(r == 1) return true;
+    else return false;
 }
 
 function display() {
@@ -43,7 +53,8 @@ function display() {
         pokeEl.classList.add("pokeitem");
 
         const pokeimg = new Image(128, 128);
-        pokeimg.src = "images/" + p.id + ".png";
+        if(isShiny()) pokeimg.src = "images/" + p.id + "shiny.png";
+        else pokeimg.src = "images/" + p.id + ".png";
         pokeEl.appendChild(pokeimg);
 
         const pokename = document.createElement("p");
